@@ -35,4 +35,11 @@ class QuantityTest {
         Quantity twelveInches = new Quantity(new BigDecimal("12"), Unit.INCH);
         assertFalse(twoFeet.isEqual(twelveInches));
     }
+
+    @Test
+    void shouldReturnTrueForInchValueEquivalentToCentimeterValue() {
+        Quantity twoInches = new Quantity(new BigDecimal("2"), Unit.INCH);
+        Quantity fiveCentimeters = new Quantity(new BigDecimal("5"), Unit.CENTIMETER);
+        assertTrue(twoInches.isEqual(fiveCentimeters));
+    }
 }
