@@ -10,7 +10,7 @@ class UnitTest {
 
     @Test
     void shouldReturnValueOfFeetInInches() {
-        BigDecimal expected = new BigDecimal("30.0");
+        BigDecimal expected = new BigDecimal("300");
         BigDecimal actual = Unit.FEET.toBaseUnit(new BigDecimal("1"));
         assertEquals(expected, actual);
     }

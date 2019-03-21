@@ -42,4 +42,11 @@ class QuantityTest {
         Quantity fiveCentimeters = new Quantity(new BigDecimal("5"), Unit.CENTIMETER);
         assertTrue(twoInches.isEqual(fiveCentimeters));
     }
+
+    @Test
+    void shouldReturnTrueForCentimeterValueEquivalentToMillimeterValue() {
+        Quantity oneCentimeter = new Quantity(new BigDecimal("1"), Unit.CENTIMETER);
+        Quantity tenMillimeter = new Quantity(new BigDecimal("10"), Unit.MILLIMETER);
+        assertTrue(oneCentimeter.isEqual(tenMillimeter));
+    }
 }
