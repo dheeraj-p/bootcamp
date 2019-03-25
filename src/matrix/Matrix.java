@@ -2,10 +2,6 @@ package matrix;
 
 class Matrix {
 
-    private interface ArithmeticOperation{
-        Integer perform(Integer a, Integer b);
-    }
-
     private Integer[][] matrixData;
 
     Matrix(Integer[][] matrixData) {
@@ -28,7 +24,7 @@ class Matrix {
             Integer[] otherRow = otherMatrix.matrixData[rowIndex];
             if (myRow.length != otherRow.length) return false;
             for (int colIndex = 0; colIndex < myRow.length; colIndex++) {
-                if (this.matrixData[rowIndex][colIndex] != otherMatrix.matrixData[rowIndex][colIndex]) {
+                if (!this.matrixData[rowIndex][colIndex].equals(otherMatrix.matrixData[rowIndex][colIndex])) {
                     return false;
                 }
             }
@@ -53,12 +49,15 @@ class Matrix {
     }
 
     Matrix add(Matrix otherMatrix) {
-        return performOperation(otherMatrix, (a, b) -> a+b);
+        return performOperation(otherMatrix, (a, b) -> a + b);
     }
 
-
     Matrix sub(Matrix otherMatrix) {
-        return performOperation(otherMatrix, (a, b) -> a-b);
+        return performOperation(otherMatrix, (a, b) -> a - b);
+    }
+
+    Matrix multiplyScalar(Integer scalar) {
+        return performOperation(this, (a, b) -> a * scalar);
     }
 
     @Override
@@ -71,5 +70,9 @@ class Matrix {
             result.append('\n');
         }
         return result.toString();
+    }
+
+    private interface ArithmeticOperation {
+        Integer perform(Integer a, Integer b);
     }
 }

@@ -2,7 +2,7 @@ package matrix;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MatrixTest {
 
@@ -39,5 +39,16 @@ class MatrixTest {
         Matrix expectedMatrix = new Matrix(expectedMatrixData);
 
         assertEquals(expectedMatrix, firstMatrix.sub(secondMatrix));
+    }
+
+    @Test
+    void shouldReturnMatrixMultipliedWithAGivenScalarQuantity() {
+        Integer[][] matrixData = {{1, 2}, {3, 4}, {5, 6}};
+        Integer[][] expectedMatrixData = {{-1, -2}, {-3, -4}, {-5, -6}};
+
+        Matrix matrix = new Matrix(matrixData);
+        Matrix expectedMatrix = new Matrix(expectedMatrixData);
+
+        assertEquals(expectedMatrix, matrix.multiplyScalar(-1));
     }
 }
