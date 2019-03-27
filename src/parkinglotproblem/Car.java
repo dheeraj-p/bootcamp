@@ -1,0 +1,4 @@
+package parkinglotproblem;
+
+class Car {
+}
